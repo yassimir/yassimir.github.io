@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yassine Elghouzli — Développeur Full-Stack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14181d;
+    --panel:#1b2129;
+    --panel-2:#20272f;
+    --line:#2b333e;
+    --text:#e9ecef;
+    --text-dim:#8b95a3;
+    --amber:#e8a856;
+    --green:#7fbf8f;
+    --max:760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(232,168,86,0.07), transparent 60%),
+      var(--ink);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+
+  /* ---------- Header ---------- */
+  header{
+    padding:88px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+  .status-line{
+    display:flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--green);
+    letter-spacing:0.02em;
+    margin-bottom:28px;
+  }
+  .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 0 3px rgba(127,191,143,0.15);
+    flex:none;
+  }
+  h1{
+    font-size:clamp(38px, 6vw, 56px);
+    font-weight:700;
+    letter-spacing:-0.015em;
+    margin:0 0 10px;
+    line-height:1.05;
+  }
+  .role{
+    font-size:18px;
+    color:var(--text-dim);
+    margin:0 0 26px;
+    font-weight:400;
+  }
+  .about{
+    max-width:60ch;
+    color:#c7cdd6;
+    font-size:15.5px;
+    margin:0 0 32px;
+  }
+  .links{
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .pill{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 16px;
+    border-radius:7px;
+    border:1px solid var(--line);
+    color:var(--text);
+    text-decoration:none;
+    font-size:14px;
+    font-weight:500;
+    background:var(--panel);
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .pill:hover{ border-color:#3a4351; background:var(--panel-2); }
+  .pill.primary{
+    background:var(--amber);
+    border-color:var(--amber);
+    color:#1a1408;
+    font-weight:600;
+  }
+  .pill.primary:hover{ background:#f0b46c; }
+  .pill svg{ width:15px; height:15px; flex:none; }
+  .meta-row{
+    display:flex; flex-wrap:wrap; gap:18px;
+    margin-top:28px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--text-dim);
+  }
+
+  /* ---------- Sections ---------- */
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  h2{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    font-weight:600;
+    color:var(--amber);
+    letter-spacing:0.04em;
+    margin:0 0 36px;
+  }
+  h2 .idx{ color:var(--text-dim); margin-right:8px; }
+
+  /* ---------- Timeline (experience) ---------- */
+  .entry{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:20px;
+    padding-bottom:34px;
+    position:relative;
+  }
+  .entry:not(:last-child)::before{
+    content:'';
+    position:absolute;
+    left:5px; top:20px; bottom:-4px;
+    width:1px;
+    background:var(--line);
+  }
+  .entry:last-child{ padding-bottom:0; }
+  .entry .when{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--text-dim);
+    padding-top:3px;
+    position:relative;
+  }
+  .entry .when::before{
+    content:'';
+    position:absolute;
+    left:-24px; top:6px;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--ink);
+    border:2px solid var(--amber);
+  }
+  .entry h3{
+    margin:0 0 3px;
+    font-size:16.5px;
+    font-weight:600;
+  }
+  .entry .org{
+    font-size:13.5px;
+    color:var(--text-dim);
+    margin:0 0 12px;
+  }
+  .entry ul{
+    margin:0 0 14px;
+    padding-left:18px;
+    color:#c7cdd6;
+    font-size:14.5px;
+  }
+  .entry li{ margin-bottom:5px; }
+  .tags{ display:flex; flex-wrap:wrap; gap:6px; }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:#a9c9c2;
+    background:rgba(127,191,143,0.08);
+    border:1px solid rgba(127,191,143,0.22);
+    padding:3px 8px;
+    border-radius:4px;
+  }
+
+  /* ---------- Skills ---------- */
+  .skill-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+    gap:28px;
+  }
+  .skill-group h4{
+    font-size:12px;
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--text-dim);
+    font-weight:500;
+    margin:0 0 12px;
+    text-transform:none;
+  }
+  .skill-group .tags .tag{
+    color:var(--text);
+    background:var(--panel);
+    border-color:var(--line);
+  }
+
+  /* ---------- Education ---------- */
+  .edu-item{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:20px;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14.5px;
+  }
+  .edu-item:last-child{ border-bottom:none; }
+  .edu-item .when{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--text-dim); padding-top:2px; }
+  .edu-item h3{ margin:0 0 3px; font-size:15px; font-weight:600; }
+  .edu-item .org{ color:var(--text-dim); font-size:13.5px; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:40px 0 60px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--text-dim);
+  }
+  footer a{ color:var(--text-dim); }
+
+  @media (max-width:600px){
+    .entry, .edu-item{ grid-template-columns:1fr; }
+    .entry .when::before{ display:none; }
+    .entry:not(:last-child)::before{ display:none; }
+    header{ padding:56px 0 40px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="status-line">
+      <span class="dot"></span>
+      DISPONIBLE — RECHERCHE ACTIVE D'UN POSTE
+    </div>
+    <h1>Yassine Elghouzli</h1>
+    <p class="role">Développeur Full-Stack — Qualité Logicielle &amp; Machine Learning</p>
+    <p class="about">
+      Diplômé d'un Master en Qualité Logicielle, j'ai développé mon expertise entre
+      applications web full-stack (Spring&nbsp;Boot, Thymeleaf) et détection de fraude
+      par machine learning en environnement bancaire. J'aime construire des systèmes
+      fiables, du modèle de données jusqu'à l'interface.
+    </p>
+    <div class="links">
+      <a class="pill primary" href="elghouzli_cv_fr.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        Télécharger le CV
+      </a>
+      <a class="pill" href="https://www.linkedin.com/in/elghouzli-yassine/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        LinkedIn
+      </a>
+      <a class="pill" href="https://github.com/yassimir" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.9-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.3 9.3 0 015 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.01 10.01 0 0022 12.2C22 6.58 17.52 2 12 2z"/></svg>
+        GitHub
+      </a>
+    </div>
+    <div class="meta-row">
+      <span>Khouribga, Maroc</span>
+      <span>Arabe · Français B2 · Anglais B1 · Allemand A2</span>
+    </div>
+  </header>
+
+  <section>
+    <h2><span class="idx">01</span>EXPÉRIENCE</h2>
+
+    <div class="entry">
+      <div class="when">Mars — Août 2025</div>
+      <div>
+        <h3>Détection de fraude par IA en architecture décentralisée</h3>
+        <p class="org">S2M, Casablanca — Stage de fin d'études</p>
+        <ul>
+          <li>Conception d'un module de détection de fraude en ML non supervisé (Isolation Forest, Autoencodeur, K-Means)</li>
+          <li>Traitement et feature engineering sur des données de transactions ISO 8583</li>
+          <li>Déploiement de la solution en API REST au sein d'une architecture bancaire décentralisée</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">TensorFlow/Keras</span><span class="tag">Pandas</span><span class="tag">API REST</span><span class="tag">ISO 8583</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Déc 2023 — Fév 2024</div>
+      <div>
+        <h3>Système de gestion des stocks, facturation et paiements</h3>
+        <p class="org">Carrelage Gharnata, Casablanca — Projet freelance</p>
+        <ul>
+          <li>Application web de gestion des stocks, ventes et facturation</li>
+          <li>Système de paiement partiel et total avec génération automatique des factures</li>
+          <li>Digitalisation de processus manuels et suivi financier précis</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Spring Boot</span><span class="tag">Thymeleaf</span><span class="tag">Bootstrap</span><span class="tag">MySQL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Avr — Juin 2023</div>
+      <div>
+        <h3>Application web pour la gestion du retrait du baccalauréat</h3>
+        <p class="org">Faculté des Lettres et Sciences Humaines, Tétouan — Stage</p>
+        <ul>
+          <li>Digitalisation et optimisation du processus de retrait</li>
+          <li>Automatisation des flux de travail manuels</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Spring Boot</span><span class="tag">Thymeleaf</span><span class="tag">Bootstrap</span><span class="tag">MySQL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Mai — Juin 2022</div>
+      <div>
+        <h3>Site web dynamique pour entreprise</h3>
+        <p class="org">CDMA Solutions, Casablanca — Stage</p>
+        <ul>
+          <li>Site d'entreprise avec formulaire de contact et gestion des clients</li>
+          <li>Pratiques modernes de design responsive</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Laravel 9</span><span class="tag">Bootstrap</span><span class="tag">MySQL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Juil — Août 2021</div>
+      <div>
+        <h3>Site vitrine statique pour un hôtel</h3>
+        <p class="org">Hôtel Al Akhawin Bilal, Khouribga — Stage</p>
+        <ul>
+          <li>Site statique pour améliorer la visibilité et l'engagement des clients</li>
+          <li>Compatibilité multi-navigateurs et facilité de maintenance</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Bootstrap</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="idx">02</span>PROJETS ACADÉMIQUES</h2>
+
+    <div class="entry">
+      <div class="when">2023 — 2024</div>
+      <div>
+        <h3>Système de répartition des tâches en Java</h3>
+        <p class="org">PFM — Application client-serveur, architecture maître-esclave</p>
+        <div class="tags"><span class="tag">Java</span><span class="tag">Programmation Socket</span></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">2023 — 2024</div>
+      <div>
+        <h3>Serveur de caching HTTP</h3>
+        <p class="org">PFM — Optimisation de bande passante et latence via Squid</p>
+        <div class="tags"><span class="tag">Linux</span><span class="tag">Squid Proxy</span></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">2023 — 2024</div>
+      <div>
+        <h3>Détection de personnes par vision par ordinateur</h3>
+        <p class="org">PFM — Système pour applications de sécurité et d'analyse</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">NumPy</span></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">2022 — 2023</div>
+      <div>
+        <h3>Système de réservation hôtelière et de gestion interne</h3>
+        <p class="org">PFM — Réservations, facturation et opérations internes</p>
+        <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Thymeleaf</span><span class="tag">Bootstrap</span><span class="tag">MySQL</span></div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">2020 — 2022</div>
+      <div>
+        <h3>Suivi des présences au centre BTS</h3>
+        <p class="org">PFE — Plateforme de gestion des présences des étudiants</p>
+        <div class="tags"><span class="tag">Laravel 9</span><span class="tag">Bootstrap</span><span class="tag">MySQL</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="idx">03</span>COMPÉTENCES</h2>
+    <div class="skill-grid">
+      <div class="skill-group">
+        <h4>Back-end</h4>
+        <div class="tags"><span class="tag">Java / Spring Boot</span><span class="tag">PHP / Laravel</span><span class="tag">VB.net / ASP.net</span></div>
+      </div>
+      <div class="skill-group">
+        <h4>Front-end</h4>
+        <div class="tags"><span class="tag">HTML / CSS / Bootstrap</span><span class="tag">JavaScript / Thymeleaf</span><span class="tag">Angular</span></div>
+      </div>
+      <div class="skill-group">
+        <h4>Bases de données</h4>
+        <div class="tags"><span class="tag">SQL</span><span class="tag">TSQL</span></div>
+      </div>
+      <div class="skill-group">
+        <h4>Outils &amp; méthodes</h4>
+        <div class="tags"><span class="tag">UML / Merise</span><span class="tag">Scrum</span><span class="tag">Docker</span><span class="tag">GitHub</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="idx">04</span>FORMATION</h2>
+    <div class="edu-item">
+      <div class="when">2023 — 2025</div>
+      <div><h3>Master en Qualité Logicielle</h3><p class="org">Faculté des Sciences, Tétouan</p></div>
+    </div>
+    <div class="edu-item">
+      <div class="when">2022 — 2023</div>
+      <div><h3>Licence en Administration Réseaux et Sécurité des Systèmes d'Information</h3><p class="org">Faculté des Sciences, Tétouan</p></div>
+    </div>
+    <div class="edu-item">
+      <div class="when">2020 — 2022</div>
+      <div><h3>BTS en Développement des Systèmes d'Information</h3><p class="org">Lycée Moulay Ismail, Meknès</p></div>
+    </div>
+    <div class="edu-item">
+      <div class="when">2018 — 2019</div>
+      <div><h3>Baccalauréat en Sciences Physiques</h3><p class="org">Lycée Al Mouahidine, Khouribga</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Yassine Elghouzli — Khouribga, Maroc</span>
+    <span><a href="mailto:elghouzlisworkspace@gmail.com">elghouzlisworkspace@gmail.com</a> · +212 6 46 70 06 02</span>
+  </footer>
+</div>
+
+</body>
+</html>
