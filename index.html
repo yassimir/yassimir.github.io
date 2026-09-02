@@ -38,6 +38,56 @@
     padding:88px 0 56px;
     border-bottom:1px solid var(--line);
   }
+  .header-top{
+    display:flex;
+    align-items:flex-start;
+    gap:26px;
+    margin-bottom:28px;
+  }
+  .avatar{
+    width:88px; height:88px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid var(--line);
+    flex:none;
+    cursor:pointer;
+    transition:border-color .15s ease;
+  }
+  .avatar:hover{ border-color:var(--amber); }
+  .header-text{ flex:1; min-width:0; }
+
+  /* ---------- Photo modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0;
+    background:rgba(10,12,15,0.85);
+    display:flex; align-items:center; justify-content:center;
+    padding:32px;
+    opacity:0; visibility:hidden;
+    transition:opacity .18s ease;
+    z-index:100;
+  }
+  .modal-overlay.open{ opacity:1; visibility:visible; }
+  .modal-overlay img{
+    max-width:min(480px, 100%);
+    max-height:80vh;
+    border-radius:12px;
+    border:1px solid var(--line);
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  }
+  .modal-close{
+    position:absolute;
+    top:24px; right:28px;
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:var(--panel);
+    color:var(--text);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    font-size:18px;
+    line-height:1;
+  }
+  .modal-close:hover{ border-color:var(--amber); }
   .status-line{
     display:flex; align-items:center; gap:8px;
     font-family:'IBM Plex Mono', monospace;
@@ -222,6 +272,8 @@
 
   @media (max-width:600px){
     .entry, .edu-item{ grid-template-columns:1fr; }
+    .avatar{ width:64px; height:64px; }
+    .header-top{ gap:16px; }
     .entry .when::before{ display:none; }
     .entry:not(:last-child)::before{ display:none; }
     header{ padding:56px 0 40px; }
@@ -240,8 +292,13 @@
       <span class="dot"></span>
       DISPONIBLE — RECHERCHE ACTIVE D'UN POSTE
     </div>
-    <h1>Yassine Elghouzli</h1>
-    <p class="role">Développeur Full-Stack — Qualité Logicielle &amp; Machine Learning</p>
+    <div class="header-top">
+      <img class="avatar" src="me.png" alt="Photo de Yassine Elghouzli" onclick="openPhotoModal()">
+      <div class="header-text">
+        <h1>Yassine Elghouzli</h1>
+        <p class="role">Développeur Full-Stack — Qualité Logicielle &amp; Machine Learning</p>
+      </div>
+    </div>
     <p class="about">
       Diplômé d'un Master en Qualité Logicielle, j'ai développé mon expertise entre
       applications web full-stack (Spring&nbsp;Boot, Thymeleaf) et détection de fraude
@@ -445,6 +502,25 @@
     <span><a href="mailto:elghouzlisworkspace@gmail.com">elghouzlisworkspace@gmail.com</a> · +212 6 46 70 06 02</span>
   </footer>
 </div>
+
+<div class="modal-overlay" id="photoModal" onclick="closePhotoModal(event)">
+  <button class="modal-close" onclick="closePhotoModal(event)" aria-label="Fermer">✕</button>
+  <img src="me.png" alt="Photo de Yassine Elghouzli">
+</div>
+
+<script>
+  function openPhotoModal(){
+    document.getElementById('photoModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePhotoModal(e){
+    document.getElementById('photoModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closePhotoModal(e);
+  });
+</script>
 
 </body>
 </html>
