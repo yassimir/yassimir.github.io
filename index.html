@@ -345,18 +345,12 @@
     <div class="header-top">
       <img class="avatar" src="me.png" alt="Yassine Elghouzli" onclick="openPhotoModal()">
       <div class="header-text">
-        <h1>Yassine Elghouzli</h1>
+        <h1 id="t-full-name"></h1>
         <p class="role" id="t-role"></p>
       </div>
     </div>
     <p class="about" id="t-about"></p>
     <div class="links">
-      <!--
-      <a class="pill primary" href="Yassine_Elghouzli_CV_FR.pdf" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
-        <span id="t-btn-cv"></span>
-      </a>
-      -->
       <a class="pill primary" id="t-cv-link" href="#" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
         <span id="t-btn-cv"></span>
@@ -411,6 +405,7 @@
 const DATA = {
   fr: {
     status: "DISPONIBLE — RECHERCHE ACTIVE D'UN POSTE",
+    fullname: "Yassine Elghouzli",
     role: "Développeur Full-Stack — Qualité Logicielle & Machine Learning",
     about: "Diplômé d'un Master en Qualité Logicielle, j'ai développé mon expertise entre applications web full-stack (Spring Boot, Thymeleaf) et détection de fraude par machine learning en environnement bancaire. J'aime construire des systèmes fiables, du modèle de données jusqu'à l'interface.",
     btnCv: "Télécharger le CV",
@@ -458,6 +453,7 @@ const DATA = {
   },
   en: {
     status: "AVAILABLE — ACTIVELY SEEKING A POSITION",
+    fullname: "Yassine Elghouzli",
     role: "Full-Stack Developer — Software Quality & Machine Learning",
     about: "Graduated with a Master's in Software Quality, I've built expertise across full-stack web applications (Spring Boot, Thymeleaf) and fraud detection through machine learning in banking environments. I enjoy building reliable systems, from the data model to the interface.",
     btnCv: "Download CV",
@@ -505,6 +501,7 @@ const DATA = {
   },
   ar: {
     status: "متاح — أبحث بنشاط عن فرصة عمل",
+    fullname: "ياسين الغزلي",
     role: "مطوّر ويب متكامل — جودة البرمجيات والتعلم الآلي",
     about: "حاصل على ماجستير في جودة البرمجيات، اكتسبت خبرة عملية بين تطوير تطبيقات ويب متكاملة (Spring Boot، Thymeleaf) واكتشاف الاحتيال باستخدام التعلم الآلي في بيئة بنكية. أحب بناء أنظمة موثوقة، من نموذج البيانات إلى الواجهة.",
     btnCv: "تحميل السيرة الذاتية",
@@ -580,6 +577,7 @@ function setLang(lang){
   document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
   document.documentElement.setAttribute('lang', lang);
   document.getElementById('t-status').textContent = d.status;
+  document.getElementById('t-full-name').textContent = d.fullname;
   document.getElementById('t-role').textContent = d.role;
   document.getElementById('t-about').textContent = d.about;
   document.getElementById('t-btn-cv').textContent = d.btnCv;
