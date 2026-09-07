@@ -345,7 +345,7 @@
     <div class="header-top">
       <img class="avatar" src="me.png" alt="Yassine Elghouzli" onclick="openPhotoModal()">
       <div class="header-text">
-        <h1>Yassine Elghouzli</h1>
+        <h1 id="t-fullname" ></h1>
         <p class="role" id="t-role"></p>
       </div>
     </div>
@@ -404,6 +404,7 @@
 <script>
 const DATA = {
   fr: {
+    fullname: "Yassine Elghouzli",
     status: "DISPONIBLE — RECHERCHE ACTIVE D'UN POSTE",
     role: "Développeur Full-Stack — Qualité Logicielle & Machine Learning",
     about: "Diplômé d'un Master en Qualité Logicielle, j'ai développé mon expertise entre applications web full-stack (Spring Boot, Thymeleaf) et détection de fraude par machine learning en environnement bancaire. J'aime construire des systèmes fiables, du modèle de données jusqu'à l'interface.",
@@ -451,6 +452,7 @@ const DATA = {
     ]
   },
   en: {
+    fullname: "Yassine Elghouzli",
     status: "AVAILABLE — ACTIVELY SEEKING A POSITION",
     role: "Full-Stack Developer — Software Quality & Machine Learning",
     about: "Graduated with a Master's in Software Quality, I've built expertise across full-stack web applications (Spring Boot, Thymeleaf) and fraud detection through machine learning in banking environments. I enjoy building reliable systems, from the data model to the interface.",
@@ -498,6 +500,7 @@ const DATA = {
     ]
   },
   ar: {
+    fullname: "ياسين الغزلي",
     status: "متاح — أبحث بنشاط عن فرصة عمل",
     role: "مطوّر ويب متكامل — جودة البرمجيات والتعلم الآلي",
     about: "حاصل على ماجستير في جودة البرمجيات، اكتسبت خبرة عملية بين تطوير تطبيقات ويب متكاملة (Spring Boot، Thymeleaf) واكتشاف الاحتيال باستخدام التعلم الآلي في بيئة بنكية. أحب بناء أنظمة موثوقة، من نموذج البيانات إلى الواجهة.",
