@@ -351,7 +351,7 @@
     </div>
     <p class="about" id="t-about"></p>
     <div class="links">
-      <a class="pill primary" href="Yassine_Elghouzli_CV_FR.pdf" download>
+      <a class="pill primary" id="t-cv-link" href="#" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
         <span id="t-btn-cv"></span>
       </a>
@@ -408,6 +408,7 @@ const DATA = {
     role: "Développeur Full-Stack — Qualité Logicielle & Machine Learning",
     about: "Diplômé d'un Master en Qualité Logicielle, j'ai développé mon expertise entre applications web full-stack (Spring Boot, Thymeleaf) et détection de fraude par machine learning en environnement bancaire. J'aime construire des systèmes fiables, du modèle de données jusqu'à l'interface.",
     btnCv: "Télécharger le CV",
+    cvFile: "Yassine_Elghouzli_CV_FR.pdf",
     location: "Khouribga, Maroc",
     langs: "Arabe · Français B2 · Anglais B1 · Allemand A2",
     secExp: "EXPÉRIENCE", secProj: "PROJETS ACADÉMIQUES", secSkills: "COMPÉTENCES", secEdu: "FORMATION",
@@ -454,6 +455,7 @@ const DATA = {
     role: "Full-Stack Developer — Software Quality & Machine Learning",
     about: "Graduated with a Master's in Software Quality, I've built expertise across full-stack web applications (Spring Boot, Thymeleaf) and fraud detection through machine learning in banking environments. I enjoy building reliable systems, from the data model to the interface.",
     btnCv: "Download CV",
+    cvFile: "Yassine_Elghouzli_CV_EN.pdf,
     location: "Khouribga, Morocco",
     langs: "Arabic (native) · French B2 · English B1 · German A2",
     secExp: "EXPERIENCE", secProj: "ACADEMIC PROJECTS", secSkills: "SKILLS", secEdu: "EDUCATION",
@@ -500,6 +502,7 @@ const DATA = {
     role: "مطوّر ويب متكامل — جودة البرمجيات والتعلم الآلي",
     about: "حاصل على ماجستير في جودة البرمجيات، اكتسبت خبرة عملية بين تطوير تطبيقات ويب متكاملة (Spring Boot، Thymeleaf) واكتشاف الاحتيال باستخدام التعلم الآلي في بيئة بنكية. أحب بناء أنظمة موثوقة، من نموذج البيانات إلى الواجهة.",
     btnCv: "تحميل السيرة الذاتية",
+    cvFile: "Yassine_Elghouzli_CV_EN.pdf",
     location: "خريبكة، المغرب",
     langs: "العربية (اللغة الأم) · الفرنسية B2 · الإنجليزية B1 · الألمانية A2",
     secExp: "الخبرة المهنية", secProj: "المشاريع الأكاديمية", secSkills: "المهارات", secEdu: "التعليم",
@@ -574,6 +577,7 @@ function setLang(lang){
   document.getElementById('t-role').textContent = d.role;
   document.getElementById('t-about').textContent = d.about;
   document.getElementById('t-btn-cv').textContent = d.btnCv;
+  document.getElementById('t-cv-link').setAttribute('href', d.cvFile);
   document.getElementById('t-location').textContent = d.location;
   document.getElementById('t-langs').textContent = d.langs;
   document.getElementById('t-sec-exp').textContent = d.secExp;
